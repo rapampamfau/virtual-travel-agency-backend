@@ -1,5 +1,6 @@
 package com.backend.domain;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -8,7 +9,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import java.util.Date;
+import java.sql.Timestamp;
 
 @Getter
 @AllArgsConstructor
@@ -27,10 +28,10 @@ public class Trip {
     private String destinationPlace;
 
     @Column(name = "departureDate")
-    private Date departureDate;
+    private Timestamp departureDate;
 
     @Column(name = "returnDate")
-    private Date returnDate;
+    private Timestamp returnDate;
 
     @Column(name = "pricePerPerson")
     private Integer pricePerPerson;
