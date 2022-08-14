@@ -1,0 +1,13 @@
+package com.backend.openweather;
+
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+
+@Getter
+@AllArgsConstructor
+@NoArgsConstructor
+public class Coord {
+    public double lat;
+    public double lon;
+}
