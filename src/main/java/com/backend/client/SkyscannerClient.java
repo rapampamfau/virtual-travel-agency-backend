@@ -2,7 +2,7 @@ package com.backend.client;
 
 import com.backend.config.SkyscannerConfig;
 import com.backend.dto.AirportDto;
-import com.backend.dto.FlightsDto;
+import com.backend.skyscanner.flights.dto.Root;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.*;
 import org.springframework.stereotype.Component;
@@ -44,10 +44,7 @@ public class SkyscannerClient {
         }
     }
 
-    public FlightsDto searchFlights(int adultsNum,
-                                          String departure_iata_code,
-                                          String destination_iata_code,
-                                          String departureDate) {
+    public Root searchFlights(int adultsNum, String departure_iata_code, String destination_iata_code, String departureDate) {
         URI url = UriComponentsBuilder
                 .fromHttpUrl(skyscannerConfig.getSkyscannerApiEndpoint() + "/search")
                 .queryParam("adults", adultsNum)
@@ -59,7 +56,7 @@ public class SkyscannerClient {
                 .toUri();
 
             HttpEntity<Void> requestEntity = new HttpEntity<>(setHeaders());
-            ResponseEntity<FlightsDto> response = restTemplate.exchange(url, HttpMethod.GET, requestEntity, FlightsDto.class);
+            ResponseEntity<Root> response = restTemplate.exchange(url, HttpMethod.GET, requestEntity, Root.class);
 
             return response.getBody();
     }

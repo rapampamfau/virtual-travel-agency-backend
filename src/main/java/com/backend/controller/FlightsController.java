@@ -2,7 +2,7 @@ package com.backend.controller;
 
 import com.backend.dto.AirportDto;
 import com.backend.service.SkyscannerFlightsService;
-import com.backend.skyscanner.flights.Item;
+import com.backend.skyscanner.flights.dto.Item;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
