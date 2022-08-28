@@ -10,7 +10,7 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class DbService {
+public class TripDbService {
 
     private final TripRepository repository;
 
