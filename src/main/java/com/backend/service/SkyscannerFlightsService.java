@@ -2,7 +2,7 @@ package com.backend.service;
 
 import com.backend.client.SkyscannerClient;
 import com.backend.dto.AirportDto;
-import com.backend.skyscanner.flights.dto.Root;
+import com.backend.skyscanner.flights.dto.FlightsRoot;
 import com.backend.skyscanner.flights.dto.Item;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -21,7 +21,7 @@ public class SkyscannerFlightsService {
     }
 
     public List<Item> fetchData(int adultsNum, String departure_iata_code, String destination_iata_code, String departureDate, String filterType) {
-        Root fetchedData = skyscannerClient.searchFlights(
+        FlightsRoot fetchedData = skyscannerClient.searchFlights(
                 adultsNum,
                 departure_iata_code,
                 destination_iata_code,
