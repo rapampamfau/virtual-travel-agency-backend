@@ -16,8 +16,9 @@ public class TripMapper {
                 tripDto.getFromPlace(),
                 tripDto.getDestinationPlace(),
                 tripDto.getDepartureDate(),
-                tripDto.getReturnDate(),
-                tripDto.getPricePerPerson()
+                tripDto.getAirlineName(),
+                tripDto.getHotelName(),
+                tripDto.getSummaryPrice()
         );
     }
 
@@ -27,8 +28,9 @@ public class TripMapper {
                 trip.getFromPlace(),
                 trip.getDestinationPlace(),
                 trip.getDepartureDate(),
-                trip.getReturnDate(),
-                trip.getPricePerPerson()
+                trip.getAirlineName(),
+                trip.getHotelName(),
+                trip.getSummaryPrice()
         );
     }
 
