@@ -10,7 +10,7 @@ import lombok.*;
 @NoArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
 @ToString
-public class Root {
+public class FlightsRoot {
     private Itineraries itineraries;
     private Context context;
 }
