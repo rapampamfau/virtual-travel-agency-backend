@@ -5,6 +5,7 @@ import com.backend.dto.AirportDto;
 import com.backend.skyscanner.flights.dto.FlightsRoot;
 import com.backend.skyscanner.hotels.dto.HotelsLocationRoot;
 import com.backend.skyscanner.hotels.dto.HotelRoomsRoot;
+import com.backend.skyscanner.rental.car.dto.RentACarRoot;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -70,7 +71,7 @@ public class SkyscannerClient {
                 LOGGER.info("Complete flights results");
             }
         } else {
-            LOGGER.error("Context is null");
+            LOGGER.error("Context of flights is null");
         }
 
         return response.getBody();
@@ -122,7 +123,34 @@ public class SkyscannerClient {
         } else {
             LOGGER.info("Complete hotels results");
         }
+        return response.getBody();
+    }
+    
+    public RentACarRoot searchRentACar(String pickupId, String pickupDate, String pickupTime, String returnDate, String returnTime) throws InterruptedException {
+        URI url = UriComponentsBuilder
+                .fromHttpUrl(skyscannerConfig.getSkyscannerApiEndpoint() + "/search-rentacar")
+                .queryParam("pickupId", pickupId)
+                .queryParam("pickupDate", pickupDate)
+                .queryParam("pickupTime", pickupTime)
+                .queryParam("returnDate", returnDate)
+                .queryParam("returnTime", returnTime)
+                .build()
+                .encode()
+                .toUri();
+        HttpEntity<Void> requestEntity = new HttpEntity<>(setHeaders());
+        ResponseEntity<RentACarRoot> response = restTemplate.exchange(url, HttpMethod.GET, requestEntity, RentACarRoot.class);
 
+        if (response.getBody().getContext() != null) {
+            if (Objects.requireNonNull(response.getBody()).getContext().getStatus().equals("incomplete")) {
+                LOGGER.info("Incomplete car rental results, another try after 15 seconds");
+                Thread.sleep(15000);
+                searchRentACar(pickupId, pickupDate, pickupTime, returnDate, returnTime);
+            } else {
+                LOGGER.info("Complete car rental results");
+            }
+        } else {
+            LOGGER.error("Context of car rental is null");
+        }
         return response.getBody();
     }
 
