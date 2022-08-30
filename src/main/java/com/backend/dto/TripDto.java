@@ -6,8 +6,6 @@ import java.sql.Timestamp;
 import java.time.LocalDate;
 
 @Getter
-@Builder
-@ToString
 @AllArgsConstructor
 @NoArgsConstructor
 public class TripDto {
