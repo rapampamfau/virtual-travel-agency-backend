@@ -2,6 +2,7 @@ package com.backend.controller;
 
 import com.backend.service.SkyscannerCarRentService;
 import com.backend.skyscanner.rental.car.dto.CarRentInfo;
+import com.backend.skyscanner.rental.car.dto.RentACarRoot;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
