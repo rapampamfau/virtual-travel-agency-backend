@@ -14,7 +14,7 @@ import java.util.ArrayList;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class HotelRoomsRoot {
     @JsonProperty("hotels")
-    public ArrayList<Hotel> hotels;
+    public ArrayList<HotelDto> hotels;
 
     @JsonProperty("context")
     public Context context;
