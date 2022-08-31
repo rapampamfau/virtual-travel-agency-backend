@@ -29,7 +29,7 @@ public class OpenWeatherClient {
         try {
             return restTemplate.getForObject(url, WeatherForecastDto.class);
         } catch (RestClientException e) {
-            System.out.println("Error " + e);
+            System.out.println("Error: " + e);
             return null;
         }
     }

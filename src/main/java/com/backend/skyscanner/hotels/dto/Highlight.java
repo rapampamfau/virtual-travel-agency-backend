@@ -1,5 +1,6 @@
 package com.backend.skyscanner.hotels.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -7,7 +8,8 @@ import lombok.NoArgsConstructor;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Highlight{
+@JsonIgnoreProperties(ignoreUnknown = true)
+public class Highlight {
     public String entity_name;
     public String hierarchy;
 }

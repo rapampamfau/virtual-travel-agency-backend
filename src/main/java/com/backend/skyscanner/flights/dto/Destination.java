@@ -1,5 +1,6 @@
 package com.backend.skyscanner.flights.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -7,6 +8,7 @@ import lombok.NoArgsConstructor;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Destination {
     public String id;
     public String name;
@@ -14,6 +16,5 @@ public class Destination {
     public String city;
     public boolean isHighlighted;
     public String flightPlaceId;
-    public Parent parent;
     public String type;
 }

@@ -1,23 +1,15 @@
 package com.backend.skyscanner.flights.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
 
 import java.util.ArrayList;
 
 @Getter
-@Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Item {
-    public String id;
     public Price price;
     public ArrayList<Leg> legs;
-    public boolean isSelfTransfer;
-    public ArrayList<String> tags;
-    public boolean isMashUp;
-    public boolean hasFlexibleOptions;
-    public double score;
-    public String deeplink;
-    public Eco eco;
 }

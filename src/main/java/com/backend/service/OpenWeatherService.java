@@ -24,10 +24,7 @@ public class OpenWeatherService {
                 .map(List::getMain)
                 .mapToDouble(Main::getTemp)
                 .average();
-        if (averageTemp.isPresent()) {
-            return averageTemp.getAsDouble();
-        } else {
-            return 0;
-        }
+
+        return averageTemp.getAsDouble();
     }
 }

@@ -42,5 +42,5 @@ public class Trip {
     private Double summaryPrice;
 
     @Column(name = "forecastedAverageTemperature")
-    private Double forecastedAverageTemperature;
+    private String forecastedAverageTemperature;
 }

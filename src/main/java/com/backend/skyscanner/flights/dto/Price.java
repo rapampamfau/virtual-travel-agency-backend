@@ -1,15 +1,15 @@
 package com.backend.skyscanner.flights.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.ToString;
 
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString
-public class Price{
+@JsonIgnoreProperties(ignoreUnknown = true)
+public class Price {
     public int raw;
     public String formatted;
 }

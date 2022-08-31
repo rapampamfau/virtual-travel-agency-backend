@@ -142,8 +142,8 @@ public class SkyscannerClient {
 
         if (response.getBody().getContext() != null) {
             if (Objects.requireNonNull(response.getBody()).getContext().getStatus().equals("incomplete")) {
-                LOGGER.info("Incomplete car rental results, another try after 15 seconds");
-                Thread.sleep(15000);
+                LOGGER.info("Incomplete car rental results, another try after 30 seconds");
+                Thread.sleep(30000);
                 searchRentACar(pickupId, pickupDate, pickupTime, returnDate, returnTime);
             } else {
                 LOGGER.info("Complete car rental results");

@@ -21,12 +21,7 @@ public class SkyscannerFlightsService {
     }
 
     public List<Item> fetchData(int adultsNum, String departure_iata_code, String destination_iata_code, String departureDate, String filterType) {
-        FlightsRoot fetchedData = skyscannerClient.searchFlights(
-                adultsNum,
-                departure_iata_code,
-                destination_iata_code,
-                departureDate);
-
+        FlightsRoot fetchedData = skyscannerClient.searchFlights(adultsNum, departure_iata_code, destination_iata_code, departureDate);
         return fetchedData.getItineraries().getBuckets().stream()
                 .filter(bucket -> bucket.getId().equals(filterType))
                 .flatMap(bucket -> bucket.getItems().stream())

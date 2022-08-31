@@ -16,5 +16,5 @@ public class TripDto {
     private String hotelName;
     private String carName;
     private Double summaryPrice;
-    private Double forecastedAverageTemperature;
+    private String forecastedAverageTemperature;
 }
