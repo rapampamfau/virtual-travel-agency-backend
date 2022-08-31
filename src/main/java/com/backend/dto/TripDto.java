@@ -2,7 +2,6 @@ package com.backend.dto;
 
 import lombok.*;
 
-import java.sql.Timestamp;
 import java.time.LocalDate;
 
 @Getter
@@ -15,5 +14,7 @@ public class TripDto {
     private LocalDate departureDate;
     private String airlineName;
     private String hotelName;
+    private String carName;
     private Double summaryPrice;
+    private Double forecastedAverageTemperature;
 }

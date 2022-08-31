@@ -18,7 +18,9 @@ public class TripMapper {
                 tripDto.getDepartureDate(),
                 tripDto.getAirlineName(),
                 tripDto.getHotelName(),
-                tripDto.getSummaryPrice()
+                tripDto.getCarName(),
+                tripDto.getSummaryPrice(),
+                tripDto.getForecastedAverageTemperature()
         );
     }
 
@@ -30,7 +32,9 @@ public class TripMapper {
                 trip.getDepartureDate(),
                 trip.getAirlineName(),
                 trip.getHotelName(),
-                trip.getSummaryPrice()
+                trip.getCarName(),
+                trip.getSummaryPrice(),
+                trip.getForecastedAverageTemperature()
         );
     }
 

@@ -35,6 +35,12 @@ public class Trip {
     @Column(name = "hotelName")
     private String hotelName;
 
+    @Column(name = "carName")
+    private String carName;
+
     @Column(name = "summaryPrice")
     private Double summaryPrice;
+
+    @Column(name = "forecastedAverageTemperature")
+    private Double forecastedAverageTemperature;
 }

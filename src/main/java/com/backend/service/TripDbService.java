@@ -12,21 +12,21 @@ import java.util.List;
 @RequiredArgsConstructor
 public class TripDbService {
 
-    private final TripRepository repository;
+    private final TripRepository tripRepository;
 
     public List<Trip> getAllTrips() {
-        return repository.findAll();
+        return tripRepository.findAll();
     }
 
     public Trip getTrip(final Long tripId) throws TripNotFoundException {
-        return repository.findById(tripId).orElseThrow(TripNotFoundException::new);
+        return tripRepository.findById(tripId).orElseThrow(TripNotFoundException::new);
     }
 
     public Trip saveTrip(final Trip trip) {
-        return repository.save(trip);
+        return tripRepository.save(trip);
     }
 
     public void deleteTrip(final Long tripId) {
-        repository.deleteById(tripId);
+        tripRepository.deleteById(tripId);
     }
 }
