@@ -3,6 +3,7 @@ package com.backend.client;
 import com.backend.config.SkyscannerConfig;
 import com.backend.dto.AirportDto;
 import com.backend.skyscanner.flights.dto.FlightsRoot;
+import com.backend.skyscanner.hotels.dto.HotelDto;
 import com.backend.skyscanner.hotels.dto.HotelsLocationRoot;
 import com.backend.skyscanner.hotels.dto.HotelRoomsRoot;
 import com.backend.skyscanner.rental.car.dto.RentACarRoot;
@@ -73,7 +74,6 @@ public class SkyscannerClient {
         } else {
             LOGGER.error("Context of flights is null");
         }
-
         return response.getBody();
     }
 
@@ -100,7 +100,7 @@ public class SkyscannerClient {
         }
     }
 
-    public HotelRoomsRoot searchHotelRooms(String locationId, int adultsNum, int roomsNum, String checkin, String checkout) throws InterruptedException {
+    public List<HotelDto> searchHotelRooms(String locationId, int adultsNum, int roomsNum, String checkin, String checkout) throws InterruptedException {
         URI url = UriComponentsBuilder
                 .fromHttpUrl(skyscannerConfig.getSkyscannerApiEndpoint() + "/search-hotel")
                 .queryParam("locationId", locationId)
@@ -123,7 +123,7 @@ public class SkyscannerClient {
         } else {
             LOGGER.info("Complete hotels results");
         }
-        return response.getBody();
+        return response.getBody().getHotels();
     }
     
     public RentACarRoot searchRentACar(String pickupId, String pickupDate, String pickupTime, String returnDate, String returnTime) throws InterruptedException {
