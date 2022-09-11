@@ -36,4 +36,17 @@ class WeatherControllerTest {
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().is(200));
     }
+
+    @Test
+    void shouldFetchWeatherForecast() throws Exception {
+        //Given
+        WeatherForecastDto testWeatherForecast = new WeatherForecastDto();
+        when(openWeatherService.fetchWeatherForecast("testLocation")).thenReturn(testWeatherForecast);
+        //When&Then
+        mockMvc
+                .perform(MockMvcRequestBuilders
+                        .get("/v1/weather/forecast/testLocation")
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(MockMvcResultMatchers.status().is(200));
+    }
 }
