@@ -2,6 +2,7 @@ package com.backend.controller;
 
 import com.backend.dto.TripDto;
 import com.backend.facade.TripFacade;
+import com.google.gson.Gson;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -86,5 +87,33 @@ class TripControllerTest {
                         .delete("/v1/trips/1")
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().is(200));
+    }
+
+    @Test
+    void shouldCreateTrip() throws Exception {
+        //Given
+        LocalDate departureDate = LocalDate.of(2022, 12, 22);
+        TripDto tripDto = new TripDto(1L, "testFromPlace", "testDestinationPlace", departureDate,
+                "testAirlineName", "testHotelName", "testCarName", 1500.2,
+                "testForecastedAverageTemperature");
+        doNothing().when(tripFacade).createTrip(tripDto);
+
+        String year = String.valueOf(tripDto.getDepartureDate().getYear());
+        String month = String.valueOf(tripDto.getDepartureDate().getMonthValue());
+        String day = String.valueOf(tripDto.getDepartureDate().getDayOfMonth());
+        String depDate = "\"" + year + "-" + month + "-" + day + "\"";
+
+        Gson gson = new Gson();
+        String jsonContent = gson.toJson(tripDto);
+        String toBeReplaced = "\\{\"year\":2022,\"month\":12,\"day\":22}";
+        String json = jsonContent.replaceAll(toBeReplaced, depDate);
+        //When & Then
+        mockMvc
+                .perform(MockMvcRequestBuilders
+                        .post("/v1/trips")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .characterEncoding("UTF-8")
+                        .content(json))
+                .andExpect(MockMvcResultMatchers.status().isOk());
     }
 }
