@@ -1,5 +1,6 @@
 package com.backend.openweather;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -9,6 +10,7 @@ import java.util.ArrayList;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class List {
     public int dt;
     public Main main;
@@ -17,7 +19,5 @@ public class List {
     public Wind wind;
     public int visibility;
     public double pop;
-    public Rain rain;
-    public Sys sys;
     public String dt_txt;
 }
