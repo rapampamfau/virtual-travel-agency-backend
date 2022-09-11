@@ -16,7 +16,6 @@ public class HotelDto {
     public String name;
     public int stars;
     public String distance;
-    public Object relevantPoiDistance;
     public ArrayList<Double> coordinates;
     public String price;
     public String cheapestOfferPartnerId;

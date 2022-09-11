@@ -32,12 +32,12 @@ public class HotelsController {
     }
 
     @GetMapping("searchByMaxPrice/{maxPrice}/{location_id}/{adultsNum}/{roomsNum}/{checkin}/{checkout}")
-    public ResponseEntity<List<HotelDto>> getHotelRoomsForGivenLocation(@PathVariable int maxPrice,
-                                                                        @PathVariable String location_id,
-                                                                        @PathVariable int adultsNum,
-                                                                        @PathVariable int roomsNum,
-                                                                        @PathVariable String checkin,
-                                                                        @PathVariable String checkout) throws InterruptedException {
+    public ResponseEntity<List<HotelDto>> getHotelRoomsForGivenLocationByMaxPrice(@PathVariable int maxPrice,
+                                                                                  @PathVariable String location_id,
+                                                                                  @PathVariable int adultsNum,
+                                                                                  @PathVariable int roomsNum,
+                                                                                  @PathVariable String checkin,
+                                                                                  @PathVariable String checkout) throws InterruptedException {
         return ResponseEntity.ok(skyscannerHotelsService.fetchHotelRoomsByMaxPrice(maxPrice, location_id, adultsNum, roomsNum, checkin, checkout));
     }
 }
