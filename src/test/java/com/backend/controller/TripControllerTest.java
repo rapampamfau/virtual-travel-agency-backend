@@ -75,4 +75,16 @@ class TripControllerTest {
                 .andExpect(MockMvcResultMatchers.jsonPath("$.summaryPrice", Matchers.is(1500.2)))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.forecastedAverageTemperature", Matchers.is("testForecastedAverageTemperature")));
     }
+
+    @Test
+    void shouldDeleteSpecificTask() throws Exception {
+        //Given
+        doNothing().when(tripFacade).deleteTrip(1L);
+        //When&Then
+        mockMvc
+                .perform(MockMvcRequestBuilders
+                        .delete("/v1/trips/1")
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(MockMvcResultMatchers.status().is(200));
+    }
 }
